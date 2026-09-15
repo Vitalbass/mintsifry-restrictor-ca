@@ -1,0 +1,21 @@
+[ req ]
+distinguished_name = req_distinguished_name
+prompt             = no
+
+[ req_distinguished_name ]
+O  = Local MitM Protection CA
+CN = Russian Trusted Root CA (Restricted)
+
+[ v3_ca ]
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints       = critical, CA:true, pathlen:0
+keyUsage               = critical, digitalSignature, cRLSign, keyCertSign
+nameConstraints        = critical, @nc_domains
+
+[ nc_domains ]
+permitted;DNS.1 = ru
+permitted;DNS.2 = su
+permitted;DNS.3 = xn--p1ai
+# При необходимости сюда можно добавить конкретные домены, например:
+# permitted;DNS.4 = gosuslugi.ru
