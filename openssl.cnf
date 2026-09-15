@@ -14,8 +14,14 @@ keyUsage               = critical, digitalSignature, cRLSign, keyCertSign
 nameConstraints = critical, @permitted_domains
 
 [ permitted_domains ]
-permitted;DNS.1 = ru
-permitted;DNS.2 = su
-permitted;DNS.3 = xn--p1ai
-# При необходимости сюда можно добавить конкретные домены, например:
-# permitted;DNS.4 = gosuslugi.ru
+permitted;DNS.1 = example.com
+permitted;DNS.2 = sub.domain.ru
+
+# При необходимости добавить всю зону, например:
+# permitted;DNS.3 = .xn--p1ai
+# permitted;DNS.4 = .ru
+
+# Домен и его поддомены:
+# permitted;DNS.5 = sub.domain.ru
+# permitted;DNS.6 = .sub.domain.ru
+
