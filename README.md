@@ -16,3 +16,8 @@ docker run --rm \
   -v "$(pwd):/out" \
   -v "$(pwd)/openssl.cnf:/openssl.cnf:ro" \
   mintsifry-restrictor-ca
+
+# 4. Устанавливаем сертификат в ОС\браузер и т.д.
+
+# 5. Проверка сертификата:
+openssl x509 -in my_restricted_ca.crt -text -noout | grep -A 10 "Name Constraints"
