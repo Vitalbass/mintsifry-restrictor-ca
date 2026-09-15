@@ -11,9 +11,9 @@ subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always,issuer
 basicConstraints       = critical, CA:true, pathlen:0
 keyUsage               = critical, digitalSignature, cRLSign, keyCertSign
-nameConstraints        = critical, @nc_domains
+nameConstraints = critical, @permitted_domains
 
-[ nc_domains ]
+[ permitted_domains ]
 permitted;DNS.1 = ru
 permitted;DNS.2 = su
 permitted;DNS.3 = xn--p1ai
