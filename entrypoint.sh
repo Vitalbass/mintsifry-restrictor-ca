@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# Пути к конфигурационным файлам (должны монтироваться в /config)
+# Пути к конфигурационным файлам
 CNF_MAIN="/config/openssl.cnf"
 CNF_CROSS="/config/cross.cnf"
 
