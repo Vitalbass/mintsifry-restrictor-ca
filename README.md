@@ -32,7 +32,7 @@ mintsifry-restrictor-ca
  - restrictor-root-ca.crt (просто добавить)
 
 
-# 5. Проверка сертификата:
+# 5. Проверка\Диагностика сертификатов:
 ```
 openssl storeutl -text -noout -certs restrictor-root-ca.crt
 openssl storeutl -text -noout -certs restrictor-ca.crt | grep -A 10 "Name Constraints"
