@@ -1,6 +1,26 @@
 #!/bin/sh
 set -e
 
+# Пути к конфигурационным файлам (должны монтироваться в /config)
+CNF_MAIN="/config/openssl.cnf"
+CNF_CROSS="/config/cross.cnf"
+
+# Проверка наличия внешних конфигурационных файлов
+if [ ! -f "$CNF_MAIN" ] || [ ! -f "$CNF_CROSS" ]; then
+    echo "Ошибка: Внешние файлы конфигурации не найдены в папке /config внутри контейнера!"
+    echo "Убедитесь, что вы передали их при запуске: -v \$(pwd)/openssl.cnf:/config/openssl.cnf -v \$(pwd)/cross.cnf:/config/cross.cnf"
+    exit 1
+fi
+
+
+
+
+
+
+
+
+
+
 # Подставляем переменные из окружения или используем дефолты, если они пусты
 KEY_PATH="/out/${LOCAL_KEY_NAME:-local_restricted_ca.key}"
 CRT_PATH="/out/${LOCAL_CRT_NAME:-local_restricted_ca.crt}"
@@ -45,19 +65,7 @@ echo "   - Выпускающий Sub CA:     $SUB_CRT_PATH"
 
 
 
-#!/bin/bash
-set -e
 
-# Пути к конфигурационным файлам (должны монтироваться в /config)
-CNF_MAIN="/config/openssl.cnf"
-CNF_CROSS="/config/cross.cnf"
-
-# Проверка наличия внешних конфигурационных файлов
-if [ ! -f "$CNF_MAIN" ] || [ ! -f "$CNF_CROSS" ]; then
-    echo "Ошибка: Внешние файлы конфигурации не найдены в папке /config внутри контейнера!"
-    echo "Убедитесь, что вы передали их при запуске: -v \$(pwd)/openssl.cnf:/config/openssl.cnf -v \$(pwd)/cross.cnf:/config/cross.cnf"
-    exit 1
-fi
 
 # Пути к результирующим файлам внутри контейнера
 OUT_KEY="/out/${RESTICTOR_LOCAL_KEY_NAME}"
