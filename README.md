@@ -13,10 +13,14 @@ git clone https://github.com/Vitalbass/mintsifry-restrictor-ca.git
 docker build -t mintsifry-restrictor-ca .
 ```
 
-# 2. В openssl.cnf задаем перечень dns-имен 
+# 3. В openssl.cnf задаем перечень dns-имен 
 В секции permitted_domains редактируем\добавляем permitted;DNS.ХХ, для которых разрешено использовать сертификат
 
-# 3. Запускаем генерацию
+# 43. При необходимости актуализируем переменные в .env
+ - Наименования получаемых сертификатов
+ - url скачиваемого сертификата, если измениться
+
+# 5. Запускаем генерацию
 Монитруем текущую папку для сохранения ключа/сертификата и файлами конфигурации сертификатов.
 ```
 docker run --rm \
@@ -27,12 +31,12 @@ docker run --rm \
 mintsifry-restrictor-ca
 ```
 
-# 4. Устанавливаем сертификат в ОС\браузер и т.д.
+# 6. Устанавливаем сертификат в ОС\браузер и т.д.
  - restrictor-ca.crt (ставим доверять для идентификации веб-сайтов)
  - restrictor-root-ca.crt (просто добавить)
 
 
-# 5. Проверка\Диагностика сертификатов:
+# 7. Проверка\Диагностика сертификатов:
 ```
 openssl storeutl -text -noout -certs restrictor-root-ca.crt
 openssl storeutl -text -noout -certs restrictor-ca.crt | grep -A 10 "Name Constraints"
