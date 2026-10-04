@@ -5,7 +5,7 @@ Docker image for re-signing Mintsifry (Russian Ministry of Digital Development) 
 
 # 1. Копирует удаленный репозиторий 
 ```
-git clone {url}
+git clone https://github.com/Vitalbass/mintsifry-restrictor-ca.git
 ```
 
 # 2. Собираем образ
