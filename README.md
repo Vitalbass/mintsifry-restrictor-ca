@@ -12,12 +12,17 @@ docker build -t mintsifry-restrictor-ca .
 # 3. Запускаем генерацию
 # Монитруем текущую папку для сохранения ключа/сертификата И  файл конфигурации
 docker run --rm \
-  --env-file .env \
-  -v "$(pwd):/out" \
-  -v "$(pwd)/openssl.cnf:/openssl.cnf:ro" \
-  mintsifry-restrictor-ca
+--env-file .env \
+-v "/$(pwd)/out:/out" \
+-v "/$(pwd)/openssl.cnf:/config/openssl.cnf:ro" \
+-v "/$(pwd)/cross.cnf:/config/cross.cnf:ro" \
+mintsifry-restrictor-ca
 
 # 4. Устанавливаем сертификат в ОС\браузер и т.д.
+ - restrictor-ca.crt (ставим доверять для идентификации веб-сайтов)
+ - restrictor-root-ca.crt (просто добавить)
+
 
 # 5. Проверка сертификата:
-openssl x509 -in my_restricted_ca.crt -text -noout | grep -A 10 "Name Constraints"
+openssl storeutl -text -noout -certs restrictor-root-ca.crt
+openssl storeutl -text -noout -certs restrictor-ca.crt | grep -A 10 "Name Constraints"
