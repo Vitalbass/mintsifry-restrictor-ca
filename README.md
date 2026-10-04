@@ -3,7 +3,7 @@ Docker-контейнер для переподписывания сертифи
 Docker image for re-signing Mintsifry (Russian Ministry of Digital Development) CA certificates with DNS-scoped constraints.
 
 
-# 1. Копирует удаленный репозиторий 
+# 1. Копируеv удаленный репозиторий 
 ```
 git clone https://github.com/Vitalbass/mintsifry-restrictor-ca.git
 ```
