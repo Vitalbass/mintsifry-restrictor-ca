@@ -3,15 +3,14 @@ distinguished_name = req_distinguished_name
 prompt             = no
 
 [ req_distinguished_name ]
-O  = Local MitM Protection CA
-CN = Russian Trusted Root CA (Restricted)
+CN = Mintsifry-Restrictor-Root-Ca
 
 [ v3_ca ]
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always,issuer
-basicConstraints       = critical, CA:true, pathlen:0
+basicConstraints       = critical, CA:true, pathlen:5
 keyUsage               = critical, digitalSignature, cRLSign, keyCertSign
-nameConstraints = critical, @permitted_domains
+nameConstraints        = critical, @permitted_domains
 
 [ permitted_domains ]
 # Конкретные домены
