@@ -13,6 +13,21 @@ git clone https://github.com/Vitalbass/mintsifry-restrictor-ca.git
 docker build -t mintsifry-restrictor-ca .
 ```
 
+```
+/etc/docker/
+└── mintsifry-restrictor-ca
+    ├── cross.cnf
+    ├── Dockerfile
+    ├── entrypoint.sh
+    ├── openssl.cnf
+    ├── out
+    │   ├── restrictor-ca.crt
+    │   ├── restrictor-ca.key
+    │   └── restrictor-root-ca.crt
+    └── README.md
+
+```
+
 # 3. В openssl.cnf задаем перечень dns-имен 
 В секции permitted_domains редактируем\добавляем permitted;DNS.ХХ, для которых разрешено использовать сертификат
 
